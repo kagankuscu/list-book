@@ -14,7 +14,7 @@ struct MainView: View {
         NavigationStack {
             List {
                 ForEach(Book.mockData) { book in
-                    NavigationLink(destination: Text("Book: \(book.bookName)")) {
+                    NavigationLink(destination: DetailView(book: book)) {
                         Row(book: book)
                     }
                 }
