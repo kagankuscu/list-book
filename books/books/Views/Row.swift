@@ -42,6 +42,6 @@ struct Row: View {
 
 #Preview {
     Row(book:
-            Book(image: "placeholder", bookName: "PlaceHolder Name", author: "PlaceHolder Author", description: "PlaceHolder Description", isLike: false)
+            Book.mockDataSingle
     )
 }
