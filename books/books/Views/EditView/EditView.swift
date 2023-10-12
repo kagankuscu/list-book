@@ -27,11 +27,6 @@ struct EditView: View {
                 // TODO: - This will change select image
                 ExtractedView(value: $image, title: "Image")
             }
-            
-            Section {
-                Toggle("Like", isOn: $isLike)
-                Toggle("Read", isOn: $isRead)
-            }
         }
         .textFieldStyle(.roundedBorder)
         .onAppear {
@@ -44,8 +39,17 @@ struct EditView: View {
         }
         .toolbar {
             ToolbarItem {
-                Button("Saved") {
-                    // action
+                Button {
+                    self.isRead.toggle()
+                } label: {
+                    Label("Saved", systemImage: self.isRead ? "checkmark.circle.fill" : "checkmark.circle")
+                }
+            }
+            ToolbarItem {
+                Button {
+                    self.isLike.toggle()
+                } label: {
+                    Label("Like", systemImage: self.isLike ? "heart.fill" : "heart")
                 }
             }
         }
