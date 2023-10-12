@@ -20,12 +20,12 @@ struct EditView: View {
     var body: some View {
         List {
             Section {
-                ExtractedView(value: $bookName, title: "Book Name")
-                ExtractedView(value: $author, title: "Author")
-                ExtractedView(value: $description, title: "Description")
+                BookInfoView(value: $bookName, title: "Book Name")
+                BookInfoView(value: $author, title: "Author")
+                BookInfoView(value: $description, title: "Description", limit: 1...10)
                 
                 // TODO: - This will change select image
-                ExtractedView(value: $image, title: "Image")
+                BookInfoView(value: $image, title: "Image")
             }
         }
         .textFieldStyle(.roundedBorder)
@@ -63,15 +63,18 @@ struct EditView: View {
     }
 }
 
-struct ExtractedView: View {
+struct BookInfoView: View {
     @Binding var value: String
     let title: String
+    var limit: ClosedRange<Int> = 0...1
+    var axis: Axis = .vertical
     
     var body: some View {
         VStack(alignment: .leading) {
             Text(title)
                 .bold()
-            TextField(title, text: $value)
+            TextField(title, text: $value, axis: axis)
+                .lineLimit(limit)
         }
     }
 }
