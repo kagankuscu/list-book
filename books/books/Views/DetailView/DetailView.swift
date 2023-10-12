@@ -26,21 +26,22 @@ struct DetailView: View {
                         Spacer()
                         LikeView(value: book.isLike)
                     }
-                    ReadStatus(isRead: false)
+                    ReadStatus(isRead: book.isRead)
                     Text(book.description)
                 }
             }
             .scrollIndicators(.hidden)
-            Spacer()
         }
-        .padding(.horizontal, 4)
+        .padding(.horizontal, 12)
         .toolbar {
             ToolbarItem {
-                Button("Edit") {
-                    // action
+                NavigationLink(destination: EditView(book: book)) {
+                    Text("Edit")
                 }
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(book.bookName)
     }
 }
 
