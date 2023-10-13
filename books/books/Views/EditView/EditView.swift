@@ -52,6 +52,13 @@ struct EditView: View {
                     Label("Like", systemImage: self.isLike ? "heart.fill" : "heart")
                 }
             }
+            ToolbarItem(placement: .bottomBar) {
+                Button {
+                    // action
+                } label: {
+                    Text("Save")
+                }
+            }
         }
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -63,18 +70,3 @@ struct EditView: View {
     }
 }
 
-struct BookInfoView: View {
-    @Binding var value: String
-    let title: String
-    var limit: ClosedRange<Int> = 0...1
-    var axis: Axis = .vertical
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(title)
-                .bold()
-            TextField(title, text: $value, axis: axis)
-                .lineLimit(limit)
-        }
-    }
-}

@@ -15,6 +15,7 @@
 		C31F09192AD54A3500389147 /* ReadStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F09182AD54A3500389147 /* ReadStatus.swift */; };
 		C31F091E2AD7F19800389147 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F091D2AD7F19800389147 /* EditView.swift */; };
 		C31F09212AD8368800389147 /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F09202AD8368800389147 /* BookViewModel.swift */; };
+		C31F09282AD93A1400389147 /* BookInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31F09272AD93A1400389147 /* BookInfoView.swift */; };
 		C322870A2AD4108200FE1C6E /* booksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32287092AD4108200FE1C6E /* booksApp.swift */; };
 		C322870C2AD4108200FE1C6E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C322870B2AD4108200FE1C6E /* MainView.swift */; };
 		C322870E2AD4108400FE1C6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C322870D2AD4108400FE1C6E /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 		C31F09182AD54A3500389147 /* ReadStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadStatus.swift; sourceTree = "<group>"; };
 		C31F091D2AD7F19800389147 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		C31F09202AD8368800389147 /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
+		C31F09272AD93A1400389147 /* BookInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfoView.swift; sourceTree = "<group>"; };
 		C32287062AD4108200FE1C6E /* books.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = books.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C32287092AD4108200FE1C6E /* booksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = booksApp.swift; sourceTree = "<group>"; };
 		C322870B2AD4108200FE1C6E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				C31F091D2AD7F19800389147 /* EditView.swift */,
+				C31F09272AD93A1400389147 /* BookInfoView.swift */,
 			);
 			path = EditView;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				C322870A2AD4108200FE1C6E /* booksApp.swift in Sources */,
 				C31F09122AD4520D00389147 /* Row.swift in Sources */,
 				C31F090E2AD44C7200389147 /* Book.swift in Sources */,
+				C31F09282AD93A1400389147 /* BookInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
