@@ -21,6 +21,16 @@ struct Row: View {
             Image(book.image)
                 .resizable()
                 .frame(width: imageWidth, height: imageHeight)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .overlay(alignment: .bottomTrailing) {
+                    Image(systemName: book.isRead ? "checkmark.circle.fill" : "xmark.circle.fill")
+                        .background(
+                            Circle()
+                                .foregroundStyle(.black)
+                        )
+                        .offset(x: 10, y: 10)
+                        .foregroundStyle(book.isRead ? .green : .red)
+                }
             VStack(alignment: .leading) {
                 Text(book.bookName)
                     .bold()

@@ -20,17 +20,12 @@ struct EditView: View {
     var body: some View {
         List {
             Section {
-                ExtractedView(value: $bookName, title: "Book Name")
-                ExtractedView(value: $author, title: "Author")
-                ExtractedView(value: $description, title: "Description")
+                BookInfoView(value: $bookName, title: "Book Name")
+                BookInfoView(value: $author, title: "Author")
+                BookInfoView(value: $description, title: "Description", limit: 1...10)
                 
                 // TODO: - This will change select image
-                ExtractedView(value: $image, title: "Image")
-            }
-            
-            Section {
-                Toggle("Like", isOn: $isLike)
-                Toggle("Read", isOn: $isRead)
+                BookInfoView(value: $image, title: "Image")
             }
         }
         .textFieldStyle(.roundedBorder)
@@ -44,8 +39,24 @@ struct EditView: View {
         }
         .toolbar {
             ToolbarItem {
-                Button("Saved") {
+                Button {
+                    self.isRead.toggle()
+                } label: {
+                    Label("Saved", systemImage: self.isRead ? "checkmark.circle.fill" : "checkmark.circle")
+                }
+            }
+            ToolbarItem {
+                Button {
+                    self.isLike.toggle()
+                } label: {
+                    Label("Like", systemImage: self.isLike ? "heart.fill" : "heart")
+                }
+            }
+            ToolbarItem(placement: .bottomBar) {
+                Button {
                     // action
+                } label: {
+                    Text("Save")
                 }
             }
         }
@@ -59,15 +70,3 @@ struct EditView: View {
     }
 }
 
-struct ExtractedView: View {
-    @Binding var value: String
-    let title: String
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text(title)
-                .bold()
-            TextField(title, text: $value)
-        }
-    }
-}
