@@ -24,9 +24,7 @@ struct MainView: View {
             .navigationTitle("List")
             .toolbar {
                 ToolbarItem {
-                    Button {
-                        
-                    } label: {
+                    NavigationLink(destination: EditView()) {
                         Label("New Item", systemImage: "plus")
                     }
                 }

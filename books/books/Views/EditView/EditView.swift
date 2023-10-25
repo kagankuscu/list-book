@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditView: View {
-    let book: Book
+    var book: Book?
     
     @State private var bookName: String = ""
     @State private var author: String = ""
@@ -16,6 +16,12 @@ struct EditView: View {
     @State private var image = ""
     @State private var isLike = false
     @State private var isRead = false
+    
+    @StateObject private var bookViewModel = BookViewModel()
+    
+    init(book: Book? = nil) {
+        self.book = book
+    }
     
     var body: some View {
         List {
@@ -30,12 +36,12 @@ struct EditView: View {
         }
         .textFieldStyle(.roundedBorder)
         .onAppear {
-            self.bookName = self.book.bookName
-            self.description = self.book.description
-            self.image = self.book.image
-            self.author = self.book.author
-            self.isLike = self.book.isLike
-            self.isRead = self.book.isRead
+            self.bookName = self.book?.bookName ?? ""
+            self.description = self.book?.description ?? ""
+            self.image = self.book?.image ?? ""
+            self.author = self.book?.author ?? ""
+            self.isLike = self.book?.isLike ?? false
+            self.isRead = self.book?.isRead ?? false
         }
         .toolbar {
             ToolbarItem {
@@ -55,18 +61,33 @@ struct EditView: View {
             ToolbarItem(placement: .bottomBar) {
                 Button {
                     // action
+                    let book = Book(image: self.image, bookName: self.bookName, author: self.author, description: self.description, isLike: self.isLike, isRead: self.isRead)
+                    if self.book == nil {
+                        // action save new book
+                        bookViewModel.saveBook(book: book)
+                    } else {
+                        // action update the book
+                        bookViewModel.updateBook(book: book)    
+                    }
+                    
                 } label: {
-                    Text("Save")
+                    Text(self.book == nil ? "Save" : "Update")
                 }
             }
         }
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(self.book == nil ? .large : .inline)
+        .navigationTitle(self.book == nil ? "Add New Book" : "")
     }
 }
 
-#Preview {
+#Preview("Edit View") {
     NavigationStack {
         EditView(book: Book.mockDataSingle)
     }
 }
 
+#Preview("Adding View") {
+    NavigationStack {
+        EditView()
+    }
+}
